@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ControlActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Velocidad prender leds"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/seg_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.5 seg" />
+
+        <Button
+            android:id="@+id/seg_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 seg" />
+
+        <Button
+            android:id="@+id/seg_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.5 seg" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Led pin 13 (cocina)"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/principals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/control_led_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="on" />
+
+        <Button
+            android:id="@+id/control_led_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="off" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Led pin 4 (sala)"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/led_four_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="on" />
+
+        <Button
+            android:id="@+id/led_four_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="off" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Led pin 5 (baño)"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/led_five_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="on" />
+
+        <Button
+            android:id="@+id/led_five_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="off" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Led pin 8 (Habitacion 1)"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/led_eigth_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="on" />
+
+        <Button
+            android:id="@+id/led_eigth_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="off" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Led pin 10 (Habitacion 2)"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/led_ten_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="on" />
+
+        <Button
+            android:id="@+id/led_ten_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="off" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/all_off"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="All off" />
+
+    <Button
+        android:id="@+id/all_on"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="All on" />
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RESET" />
+
+    <Button
+        android:id="@+id/control_led_disconnect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="desconectar" />
+
+</LinearLayout>
