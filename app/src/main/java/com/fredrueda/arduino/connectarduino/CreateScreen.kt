@@ -48,6 +48,7 @@ class CreateScreen : AppCompatActivity() {
             // Aplicar los cambios
             editor.apply()
         }
+
         clearall.setOnClickListener{
             val editor = sharedPreferences.edit()
             editor.clear()
