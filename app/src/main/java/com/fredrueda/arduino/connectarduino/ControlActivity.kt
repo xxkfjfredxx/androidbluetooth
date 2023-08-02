@@ -10,14 +10,16 @@ import android.content.Context
 import android.os.AsyncTask
 import java.util.*
 import android.bluetooth.BluetoothSocket
+import android.content.SharedPreferences
 import android.util.Log
+import android.widget.Button
+import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_control.*
 import java.io.IOException
 
-
-
 class ControlActivity: AppCompatActivity() {
 
+    private lateinit var sharedPreferences: SharedPreferences
     companion object {
         var m_myUUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
         var m_bluetoothSocket: BluetoothSocket? = null
@@ -31,26 +33,11 @@ class ControlActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_control)
         m_address = intent.getStringExtra(SelectDeviceActivity.EXTRA_ADDRESS)!!
+        sharedPreferences = getSharedPreferences("ButtonsData", MODE_PRIVATE)
 
         ConnectToDevice(this).execute()
-
-        seg_one.setOnClickListener { sendCommand("o") }
-        seg_two.setOnClickListener { sendCommand("p") }
-        seg_three.setOnClickListener { sendCommand("q") }
-        control_led_on.setOnClickListener { sendCommand("a") }
-        control_led_off.setOnClickListener { sendCommand("b") }
-        led_four_on.setOnClickListener { sendCommand("c") }
-        led_four_off.setOnClickListener { sendCommand("d") }
-        led_five_on.setOnClickListener { sendCommand("e") }
-        led_five_off.setOnClickListener { sendCommand("f") }
-        led_eigth_on.setOnClickListener { sendCommand("g") }
-        led_eigth_off.setOnClickListener { sendCommand("h") }
-        led_ten_on.setOnClickListener { sendCommand("i") }
-        led_ten_off.setOnClickListener { sendCommand("j") }
-        all_off.setOnClickListener { sendCommand("k") }
-        all_on.setOnClickListener { sendCommand("l") }
-        reset.setOnClickListener { sendCommand("m") }
-        control_led_disconnect.setOnClickListener { disconnect() }
+        //control_led_disconnect.setOnClickListener { disconnect() }
+        loadButtonsData()
     }
 
     private fun sendCommand(input: String) {
@@ -115,4 +102,41 @@ class ControlActivity: AppCompatActivity() {
             m_progress.dismiss()
         }
     }
+    private fun createButton(buttonName: String, varEncender: String, varApagar: String) {
+        val newButtonEncender = Button(this)
+        val newButtonApagar = Button(this)
+        newButtonEncender.text =  "$buttonName Encender"
+        newButtonApagar.text =  "$buttonName Apagar"
+        newButtonEncender.setOnClickListener {
+            sendCommand(varEncender)
+        }
+        newButtonApagar.setOnClickListener {
+            sendCommand(varApagar)
+        }
+        val linearLayout = findViewById<LinearLayout>(R.id.container) // Obtener la referencia al LinearLayout desde el layout XML
+        val layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        linearLayout.orientation = LinearLayout.VERTICAL // Establecer la orientación vertical
+        val horizontalLayout = LinearLayout(this) // Crear un LinearLayout para los botones juntos
+        horizontalLayout.orientation = LinearLayout.HORIZONTAL
+        horizontalLayout.addView(newButtonEncender) // Agregar el primer botón al LinearLayout horizontal
+        horizontalLayout.addView(newButtonApagar) // Agregar el segundo botón al LinearLayout horizontal
+
+        linearLayout.addView(horizontalLayout, layoutParams) // Agregar el LinearLayout horizontal al LinearLayout vertical
+    }
+    private fun loadButtonsData() {
+        // Obtener la cantidad de botones generados previamente
+        val buttonCount = sharedPreferences.getInt("buttonCount", 0)
+        // Cargar los datos de cada botón generado
+        for (i in 0 until buttonCount) {
+            val buttonName = sharedPreferences.getString("buttonName$i", "")
+            val constantVariableEncender = sharedPreferences.getString("constantVariable$i", "")
+            val constantVariableApagar = sharedPreferences.getString("constantVariable$i", "")
+            // Crear el botón y cargar los datos
+            buttonName?.let { createButton(it,constantVariableEncender ?: "", constantVariableApagar ?: "") }
+        }
+    }
+
 }
