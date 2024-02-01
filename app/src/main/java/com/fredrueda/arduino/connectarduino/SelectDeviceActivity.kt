@@ -7,6 +7,7 @@ import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.content.Intent
+import android.content.SharedPreferences
 import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -18,6 +19,7 @@ class SelectDeviceActivity : AppCompatActivity() {
     private var m_bluetoothAdapter: BluetoothAdapter? = null
     private lateinit var m_pairedDevices: Set<BluetoothDevice>
     private val REQUEST_ENABLE_BLUETOOTH = 1
+    private lateinit var sharedPreferences: SharedPreferences
 
     companion object {
         val EXTRA_ADDRESS: String = "Device_address"
@@ -37,7 +39,10 @@ class SelectDeviceActivity : AppCompatActivity() {
             startActivityForResult(enableBluetoothIntent, REQUEST_ENABLE_BLUETOOTH)
         }
 
+        sharedPreferences = getSharedPreferences("ButtonsData", MODE_PRIVATE)
+
         select_device_refresh.setOnClickListener { pairedDeviceList() }
+        pairedDeviceList()
 
     }
 
@@ -62,8 +67,10 @@ class SelectDeviceActivity : AppCompatActivity() {
             AdapterView.OnItemClickListener { _, _, position, _ ->
                 val device: BluetoothDevice = list[position]
                 val address: String = device.address
-                val intent = Intent(this, ControlActivity::class.java)
-                intent.putExtra(EXTRA_ADDRESS, address)
+                val editor = sharedPreferences.edit()
+                editor.putString("address", address)
+                editor.apply()
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
     }

@@ -18,17 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="identificador de prender (a,f,w)"
+        android:hint="identificador de encender y apagar a,b,c..l"
         app:layout_constraintTop_toBottomOf="@+id/editTextName" />
-
-
-    <EditText
-        android:id="@+id/editTextVariableApagar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="identificador de apagar (b,g,x)"
-        app:layout_constraintTop_toBottomOf="@+id/editTextVariableEncender" />
 
     <Button
         android:id="@+id/addButton"
@@ -37,7 +28,7 @@
         android:layout_marginTop="8dp"
         android:text="agregar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextVariableApagar" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextVariableEncender" />
 
     <Button
         android:id="@+id/deletelast"

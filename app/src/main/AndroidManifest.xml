@@ -22,9 +22,9 @@
             android:name=".ControlActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SelectDeviceActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SelectDeviceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
