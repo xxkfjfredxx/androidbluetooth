@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         search.setOnClickListener {
-            val intent = Intent(this, SelectDeviceActivity::class.java)
+            val intent = Intent(this, ControlActivity::class.java)
             startActivity(intent)
         }
 
